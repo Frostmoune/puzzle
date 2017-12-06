@@ -14,6 +14,7 @@ var is_win;//判断是否胜利
 var white_row;//储存空白图片的当前行
 var white_col;//储存空白图片的当前列
 var time;//用于计时
+var total_isvis;//用于A-star算法的去重
 
 //Node的构造函数
 function newNode(pic){
@@ -72,6 +73,7 @@ function init(){
     image_id=new Array(16);
     fact=new Array(16);
     now_puzzle=new Array(4);
+    total_isvis=new Array(11);
     fact[0]=1;
     var k=0;
     var button_str="button",image_str="url(image/";
@@ -156,6 +158,14 @@ function AI_move(now){
 
 //一步一步还原拼图
 function steps_by_steps(now){
+    if(now==null){
+        var helpbut=document.getElementById("help");
+        helpbut.value="Help";
+        helpbut.style.fontWeight="normal";
+        helpbut.style.fontSize="30px";
+        is_help_start=0;
+        return;
+    }
     if(is_win)return;
     if(is_help_start==0)return;
     for(var i=0;i<4;++i){
@@ -184,8 +194,8 @@ function steps_by_steps(now){
 //用于还原拼图的A*算法
 function A_star(begin_node,level){
     var search_queue=[];
-    var isvis={};
     var nowhash=0;
+    var isvis={};
     if(level==1){
         nowhash=cantor(begin_node);
         begin_node.end_dis=getDis(begin_node);
@@ -207,17 +217,27 @@ function A_star(begin_node,level){
             newson.begin_dis+=1;
             newson.end_dis=getDis(newson);
             newson.total_dis=newson.begin_dis+newson.end_dis;
-            if(nowhash==0){
+            if(nowhash==0||newson.begin_dis>=160){
+                newson.next=null;
                 var beg_node=AI_move(newson);
                 steps_by_steps(beg_node);
+                for(var i=0;i<11;++i)total_isvis[i]={};
                 return;
             }
             if(newson.begin_dis>=16*level){
+                total_isvis[level]=isvis;
                 A_star(father,level+1);
                 return;
                 //AI_move(father);
             }
-            if(isvis[nowhash]==1)continue;
+            var flag=0;
+            for(var k=1;k<level;++k){
+                if(total_isvis[k][nowhash]==1){
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==1||isvis[nowhash]==1)continue;
             isvis[nowhash]=1;
             var j=0;
             for(;j<search_queue.length;++j){
@@ -266,7 +286,7 @@ function changePuzzle(nowid,nextid){
 //用于游戏一开始将拼图打乱
 function autoMove(){
     var nowid=0,nextid=0;
-    var totalsteps=Math.round(120*Math.random());
+    var totalsteps=Math.round(300*Math.random());
     for(var i=0;i<totalsteps;++i){
         nextid=to_next_id(nowid);
         changePuzzle(nowid,nextid);
@@ -351,9 +371,11 @@ window.onload=function(){
     init();
     var startbut=document.getElementById("start");
     startbut.onclick=function(){
-        is_start=1;
-        autoMove();
-        counttime();
+        if(is_start==0){
+            autoMove();
+            is_start=1;
+            counttime();
+        }
     }
     var helpbut=document.getElementById("help");
     helpbut.onclick=function(){
