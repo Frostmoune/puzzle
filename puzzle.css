@@ -1,0 +1,184 @@
+.centerdiv{
+    width:440px;
+    height:400px;
+    top:15%;
+    left:35%;
+    right:30%;
+    bottom:45%;
+    position:absolute;
+}
+
+.bottomdiv{
+    width:210px;
+    height:50px;
+    top:70%;
+    left:36%;
+    right:35%;
+    bottom:10%;
+    position:absolute;
+}
+
+.rightdiv{
+    width:120px;
+    height:50px;
+    top:38%;
+    left:64%;
+    right:15%;
+    bottom:30%;
+    position:absolute;
+}
+
+.leftdiv{
+    width:120px;
+    height:50px;
+    top:36%;
+    left:23%;
+    right:63%;
+    bottom:30%;
+    position:absolute;
+}
+
+#puzzle{
+    width:440px;
+    height:396px;
+}
+
+.mytr{
+    width:440px;
+    height:396px;
+}
+
+.puzzleimage{
+    border:none;
+    width:109px;
+    height:98px;
+    background-size:109px,98px;
+    cursor:pointer;
+    position:absolute;
+}
+
+.startbutton{
+    width:200px;
+    height:50px;
+    background-color:rgb(129, 217, 233);
+    text-align:center;
+    font-size:42px;
+    font-family:"Times New Roman";
+    cursor:pointer;
+    top:20px;
+    position: absolute;
+    border:none;
+    border-radius:15px;
+}
+
+.startbutton:hover{
+    background-color:whitesmoke;
+    text-decoration: black;
+}
+
+.helpbutton{
+    width:100px;
+    height:100px;
+    background-color:rgb(179, 221, 189);
+    text-align:center;
+    font-size:30px;
+    font-family:"Times New Roman";
+    cursor:pointer;
+    top:20px;
+    position: absolute;
+    border:none;
+    border-radius:100px;
+}
+
+.helpbutton:hover{
+    background-color:whitesmoke;
+    text-decoration: black;
+}
+
+.timeword{
+    color:red;
+    width:70px;
+    height:35px;
+    font-family:"Times New Roman";
+    font-size:29px;
+    display:inline-block;
+}
+
+.timecount{
+    color:black;
+    width:100px;
+    height:37px;
+    text-align: center;
+    font-family:"Times New Roman";
+    background-color: rgb(248, 192, 192);
+    border-color:rgb(248, 192, 192);
+    font-size:30px;
+    display:inline-block;
+}
+
+.
+
+/* #button0{
+    background-image: url("image/0.png");
+    background-position: center;
+} 
+#button1{
+    background-image: url("image/1.png");
+    background-position: center;
+} 
+#button2{
+    background-image: url("image/2.png");
+    background-position: center;
+} 
+#button3{
+    background-image: url("image/3.png");
+    background-position: center;
+} 
+#button4{
+    background-image: url("image/4.png");
+    background-position: center;
+} 
+#button5{
+    background-image: url("image/5.png");
+    background-position: center;
+} 
+#button6{
+    background-image: url("image/6.png");
+    background-position: center;
+} 
+#button7{
+    background-image: url("image/7.png");
+    background-position: center;
+} 
+#button8{
+    background-image: url("image/8.png");
+    background-position: center;
+} 
+#button9{
+    background-image: url("image/9.png");
+    background-position: center;
+} 
+#button10{
+    background-image: url("image/10.png");
+    background-position: center;
+} 
+#button11{
+    background-image: url("image/11.png");
+    background-position: center;
+} 
+#button12{
+    background-image: url("image/12.png");
+    background-position: center;
+} 
+#button13{
+    background-image: url("image/13.png");
+    background-position: center;
+} 
+#button14{
+    background-image: url("image/14.png");
+    background-position: center;
+} 
+#button15{
+    background-image: url("image/15.png");
+    background-position: center;
+}  */
