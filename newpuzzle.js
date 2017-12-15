@@ -217,7 +217,7 @@ function A_star(begin_node,level){
             newson.begin_dis+=1;
             newson.end_dis=getDis(newson);
             newson.total_dis=newson.begin_dis+newson.end_dis;
-            if(nowhash==0||newson.begin_dis>=160){
+            if(nowhash==0||newson.begin_dis>=128){
                 newson.next=null;
                 var beg_node=AI_move(newson);
                 steps_by_steps(beg_node);
@@ -246,6 +246,7 @@ function A_star(begin_node,level){
             search_queue.splice(j,0,newson);
         }
     }
+    if(search_queue.length==0)alert("Wrong!");
     return null;
 }
 
@@ -286,7 +287,7 @@ function changePuzzle(nowid,nextid){
 //用于游戏一开始将拼图打乱
 function autoMove(){
     var nowid=0,nextid=0;
-    var totalsteps=Math.round(300*Math.random());
+    var totalsteps=Math.round(200*Math.random());
     for(var i=0;i<totalsteps;++i){
         nextid=to_next_id(nowid);
         changePuzzle(nowid,nextid);
